@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Portfolio Universe</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="relative overflow-hidden">
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center">
+        <!-- 3D Card Container -->
+        <div class="w-full max-w-4xl h-[600px] relative">
+            <div id="card-3d" class="card-3d w-full h-full">
+                <!-- Front Side -->
+                <div
+                    class="card-front bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-xl p-8 flex flex-col justify-between">
+                    <!-- Header -->
+                    <div class="text-center">
+                        <div
+                            class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary border-opacity-50 glow float">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSIjMzMzMzMzIi8+CjxwYXRoIGQ9Ik02NCAzMkM3Ni44MzcyIDMyIDg4IDM1LjU4MjYgOTcgNDEuNzQwN0MxMDYgNDcuODk4OSAxMTIgNTYuNDM1OSAxMTUgNjYuMTYwN0MxMTggNzUuODg1NSAxMTggODYuNDA2MiAxMTUgOTYuMTMwOUMxMTIgMTA1Ljg1NiAxMDYgMTE0LjM5MyA5NyAxMjAuNTUxQzg4IDEyNi43MDkgNzYuODM3MiAxMzAuMjkyIDY0IDEzMC4yOTJDNTEuMTYyOCAxMzAuMjkyIDQwIDEyNi43MDkgMzEgMTIwLjU1MUMyMiAxMTQuMzkzIDE2IDEwNS44NTYgMTMgOTYuMTMwOUMxMCA4Ni40MDYyIDEwIDc1Ljg4NTUgMTMgNjYuMTYwN0MxNiA1Ni40MzU5IDIyIDQ3Ljg5ODkgMzEgNDEuNzQwN0M0MCAzNS41ODI2IDUxLjE2MjggMzIgNjQgMzJaIiBmaWxsPSIjMDBmM2ZmIiBmaWxsLW9wYWNpdHk9IjAuNSIvPgo8cGF0aCBkPSJNNjQgODBDNzEuNzMyIDgwIDc4IDczLjczMiA3OCA2NkM3OCA1OC4yNjgxIDcxLjczMiA1MiA2NCA1MkM1Ni4yNjgxIDUyIDUwIDU4LjI2ODEgNTAgNjZDNTAgNzMuNzMyIDU2LjI2ODEgODAgNjQgODBaIiBmaWxsPSIjMDBmM2ZmIi8+Cjwvc3ZnPgo="
+                                alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <h1 class="text-4xl font-bold text-primary text-glow mb-2">Alex Morgan</h1>
+                        <h2 class="text-xl text-secondary text-glow mb-4">Full Stack Developer & UI/UX Designer</h2>
+                        <p class="text-gray-300 max-w-md mx-auto">Creating digital experiences that bridge imagination
+                            and technology</p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-primary text-glow">50+</div>
+                            <div class="text-gray-400">Projects</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-secondary text-glow">5+</div>
+                            <div class="text-gray-400">Years</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-accent text-glow">100%</div>
+                            <div class="text-gray-400">Satisfaction</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="text-center">
+                        <button id="flip-btn"
+                            class="px-6 py-3 bg-primary bg-opacity-20 text-primary rounded-full border border-primary border-opacity-50 hover:bg-opacity-30 transition-all duration-300 glow">
+                            Explore My Universe <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                        <p class="text-gray-400 text-sm mt-4">Click or use arrow keys to navigate</p>
+                    </div>
+                </div>
+
+                <!-- Back Side -->
+                <div
+                    class="card-back bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-xl overflow-hidden">
+                    <!-- Navigation -->
+                    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                        <button id="back-btn"
+                            class="px-4 py-2 bg-secondary bg-opacity-20 text-secondary rounded-full border border-secondary border-opacity-50 hover:bg-opacity-30 transition-all duration-300">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <div class="flex space-x-2">
+                            <button
+                                class="section-btn active px-3 py-1 rounded-full bg-primary bg-opacity-20 text-primary text-sm"
+                                data-section="about">About</button>
+                            <button
+                                class="section-btn px-3 py-1 rounded-full bg-secondary bg-opacity-20 text-secondary text-sm"
+                                data-section="skills">Skills</button>
+                            <button
+                                class="section-btn px-3 py-1 rounded-full bg-accent bg-opacity-20 text-accent text-sm"
+                                data-section="projects">Projects</button>
+                            <button
+                                class="section-btn px-3 py-1 rounded-full bg-gray-600 bg-opacity-20 text-gray-300 text-sm"
+                                data-section="contact">Contact</button>
+                        </div>
+                    </div>
+
+                    <!-- Sections Container -->
+                    <div class="h-[500px] overflow-y-auto p-6">
+                        <!-- About Section -->
+                        <div id="about-section" class="section-content active">
+                            <h2 class="text-2xl font-bold text-primary text-glow mb-4">About Me</h2>
+                            <div class="space-y-4">
+                                <p class="text-gray-300">Hello! I'm Alex, a passionate developer with over 5 years of
+                                    experience creating immersive digital experiences. I specialize in frontend
+                                    development with a focus on 3D interfaces and interactive animations.</p>
+                                <p class="text-gray-300">My mission is to push the boundaries of web technology to
+                                    create experiences that are not just functional, but truly memorable.</p>
+                                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg border-l-4 border-primary">
+                                    <h3 class="text-primary font-bold mb-2">Current Focus</h3>
+                                    <p class="text-gray-300">Exploring WebGL and Three.js for creating browser-based 3D
+                                        experiences</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Section -->
+                        <div id="skills-section" class="section-content hidden">
+                            <h2 class="text-2xl font-bold text-secondary text-glow mb-4">My Skills</h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-300">JavaScript</span>
+                                        <span class="text-secondary">95%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-secondary" data-width="95"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-300">HTML/CSS</span>
+                                        <span class="text-secondary">98%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-secondary" data-width="98"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-300">React</span>
+                                        <span class="text-secondary">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-secondary" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-300">Three.js</span>
+                                        <span class="text-secondary">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-secondary" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-300">UI/UX Design</span>
+                                        <span class="text-secondary">88%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress bg-secondary" data-width="88"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projects Section -->
+                        <div id="projects-section" class="section-content hidden">
+                            <h2 class="text-2xl font-bold text-accent text-glow mb-4">Featured Projects</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="project-card bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-gray-700 hover:border-accent transition-all duration-300 cursor-pointer">
+                                    <div class="h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg mb-3">
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white mb-1">Nebula Dashboard</h3>
+                                    <p class="text-gray-400 text-sm">Interactive data visualization platform with 3D
+                                        charts</p>
+                                </div>
+                                <div
+                                    class="project-card bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-gray-700 hover:border-accent transition-all duration-300 cursor-pointer">
+                                    <div class="h-32 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg mb-3"></div>
+                                    <h3 class="text-lg font-bold text-white mb-1">Quantum UI Library</h3>
+                                    <p class="text-gray-400 text-sm">Component library with physics-based animations</p>
+                                </div>
+                                <div
+                                    class="project-card bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-gray-700 hover:border-accent transition-all duration-300 cursor-pointer">
+                                    <div class="h-32 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg mb-3"></div>
+                                    <h3 class="text-lg font-bold text-white mb-1">Cosmic E-commerce</h3>
+                                    <p class="text-gray-400 text-sm">Immersive shopping experience with AR previews</p>
+                                </div>
+                                <div
+                                    class="project-card bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-gray-700 hover:border-accent transition-all duration-300 cursor-pointer">
+                                    <div class="h-32 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg mb-3"></div>
+                                    <h3 class="text-lg font-bold text-white mb-1">Astral Portfolio</h3>
+                                    <p class="text-gray-400 text-sm">3D portfolio website with interactive elements</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div id="contact-section" class="section-content hidden">
+                            <h2 class="text-2xl font-bold text-gray-300 text-glow mb-4">Get In Touch</h2>
+                            <div class="space-y-6">
+                                <p class="text-gray-300">I'm always open to discussing new projects, creative ideas, or
+                                    opportunities to be part of your vision.</p>
+
+                                <div class="flex flex-wrap gap-4 justify-center">
+                                    <a href="#"
+                                        class="social-icon w-12 h-12 rounded-full bg-primary bg-opacity-20 flex items-center justify-center text-primary border border-primary border-opacity-50 hover:bg-opacity-30 transition-all duration-300 pulse">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center text-secondary border border-secondary border-opacity-50 hover:bg-opacity-30 transition-all duration-300 pulse">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-12 h-12 rounded-full bg-accent bg-opacity-20 flex items-center justify-center text-accent border border-accent border-opacity-50 hover:bg-opacity-30 transition-all duration-300 pulse">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-12 h-12 rounded-full bg-gray-600 bg-opacity-20 flex items-center justify-center text-gray-300 border border-gray-500 border-opacity-50 hover:bg-opacity-30 transition-all duration-300 pulse">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+
+                                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg">
+                                    <h3 class="text-primary font-bold mb-2">Direct Message</h3>
+                                    <form class="space-y-3">
+                                        <input type="text" placeholder="Your Name"
+                                            class="w-full p-2 bg-gray-700 rounded border border-gray-600 focus:border-primary focus:outline-none">
+                                        <input type="email" placeholder="Your Email"
+                                            class="w-full p-2 bg-gray-700 rounded border border-gray-600 focus:border-primary focus:outline-none">
+                                        <textarea placeholder="Your Message" rows="3"
+                                            class="w-full p-2 bg-gray-700 rounded border border-gray-600 focus:border-primary focus:outline-none"></textarea>
+                                        <button type="submit"
+                                            class="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-80 transition-all duration-300">Send
+                                            Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Visualizer -->
+    <canvas id="visualizer"></canvas>
+
+    <!-- Chatbot Widget -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <button id="chatbot-toggle"
+            class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg glow">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div id="chatbot"
+            class="chatbot absolute bottom-14 right-0 w-80 h-96 bg-gray-800 rounded-lg shadow-xl border border-gray-700 overflow-hidden">
+            <div class="bg-gray-900 p-3 flex justify-between items-center">
+                <h3 class="text-primary font-bold">Cosmic Assistant</h3>
+                <button id="close-chatbot" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages" class="h-72 p-4 overflow-y-auto space-y-3">
+                <div class="bg-gray-700 p-3 rounded-lg max-w-xs">
+                    <p class="text-sm">Hello! I'm your cosmic assistant. How can I help you explore this portfolio?</p>
+                </div>
+            </div>
+            <div class="p-3 border-t border-gray-700">
+                <div class="flex">
+                    <input type="text" id="chat-input" placeholder="Type your message..."
+                        class="flex-1 p-2 bg-gray-700 rounded-l border border-gray-600 focus:border-primary focus:outline-none">
+                    <button id="send-message" class="px-4 bg-primary text-white rounded-r">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle"
+            class="px-4 py-2 bg-gray-800 rounded-full text-white border border-gray-700 flex items-center">
+            <i class="fas fa-moon mr-2"></i> Dark Mode
+        </button>
+    </div>
+
+    <!-- Easter Egg Notification -->
+    <div id="easter-egg"
+        class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full shadow-lg z-50 hidden">
+        Universe Mode Activated!
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
